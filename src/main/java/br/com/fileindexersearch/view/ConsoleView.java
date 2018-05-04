@@ -53,6 +53,8 @@ public class ConsoleView {
 			
 			command = this.extractValuesCommand(command);
 			if(command == null || !this.validCommand(command)) {
+				System.out.println(I18nUtil.getTextoInternacionalizado(LabelKay.COMAND_INVALID.getKey()) );
+				this.writeOptions();
 				continue;
 			}
 			this.runCommand(command);
@@ -124,7 +126,6 @@ public class ConsoleView {
 
 	private boolean validCommand(String command) {
 		if(ConsoleCommand.getByCommand(command) == null) {
-			this.writeOptions();
 			return false;
 		}
 		return true;
