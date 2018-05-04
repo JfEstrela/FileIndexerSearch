@@ -14,7 +14,10 @@ public enum LabelKay {
 	LINE("label.line"),//
 	HEADER("label.header"),//
 	PATH_NOT_NULL("label.caminho.arquivo.nao.pode.ser.nulo"),//
-	SEARCH_SENSITIVE("label.pesquisa.sensiteve");
+	SEARCH_SENSITIVE("label.pesquisa.sensiteve"),//
+	NOT_EXIST_FILE("label.arquivo.nao.encontrado"),//
+	NOT_EXIST_DIRECTORY("label.diretorio.nao.encontrato"),//
+	INVALID_EXTENSION("label.extencao.arquivo.invalido");
 	 
 	private String key;
 	

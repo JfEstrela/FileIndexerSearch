@@ -8,7 +8,9 @@ import java.util.Map;
 
 import br.com.fileindexersearch.enums.Delimiter;
 import br.com.fileindexersearch.enums.Extension;
+import br.com.fileindexersearch.enums.LabelKay;
 import br.com.fileindexersearch.exception.FileIndexerSearchException;
+import br.com.fileindexersearch.i18n.I18nUtil;
 import br.com.fileindexersearch.util.FilenameUtils;
 
 public abstract class FileReaderService {
@@ -39,11 +41,11 @@ public abstract class FileReaderService {
 
 	private void isFileValid() throws FileIndexerSearchException {
 		if(!this.getFile().exists()) {
-			throw new FileIndexerSearchException("O arquivo '"+this.getFile().getAbsolutePath()+ "' não foi encontrado.");
+			throw new FileIndexerSearchException(I18nUtil.getTextoInternacionalizado(LabelKay.NOT_EXIST_FILE.getKey(), this.getFile().getAbsolutePath()));
 		}if(!this.getFile().isFile()) {
-			throw new FileIndexerSearchException("O diretorio '"+this.getFile().getAbsolutePath()+"' informado não contem um arquivo valido.");
+			throw new FileIndexerSearchException(I18nUtil.getTextoInternacionalizado(LabelKay.NOT_EXIST_DIRECTORY.getKey(), this.getFile().getAbsolutePath()));
 		}else if(!FilenameUtils.getFileExtension(this.getFile()).equalsIgnoreCase(this.getFileExtension().name())) {
-			throw new FileIndexerSearchException("Extensão do arquivo invalida. Extensão valida: ".concat(this.getFileExtension().name()));
+			throw new FileIndexerSearchException(I18nUtil.getTextoInternacionalizado(LabelKay.INVALID_EXTENSION.getKey(), this.getFileExtension().name()));
 		}
 		
 	}
